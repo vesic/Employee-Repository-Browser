@@ -59,14 +59,29 @@ router.route('/employees')
 router.route('/employees/:id')
   .get(function(req, res) {
     var id = req.params.id;
-    Employee.findById(id, function (err, employee) {
+    Employee.findById(id, function(err, employee) {
       if (err) {
         res.send(err);
       }
       res.send(employee);
     })
   })
-
+  .put(function(req, res) {
+    var id = req.params.id;
+    Employee.findById(id, function(err, employee) {
+      if (err) {
+        res.send(err);
+      }
+      employee.name = req.body.name;
+      employee.save(function(err) {
+        if (err) {
+          res.send(err);
+        }
+        res.json({ message: 'Employee updated!' });
+      })
+    })
+  })
+  
 app.use('/api', router);
 
 app.listen(port, function(err) {
