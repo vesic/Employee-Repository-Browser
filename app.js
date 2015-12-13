@@ -44,7 +44,6 @@ router.route('/employees')
       if (err) {
         res.send(err);
       }
-      
       res.json({ message: 'Employee created!' });
     });
   })
@@ -53,11 +52,21 @@ router.route('/employees')
       if (err) {
         res.send(err);
       }
-      
       res.send(employees);
     })
   })
   
+router.route('/employees/:id')
+  .get(function(req, res) {
+    var id = req.params.id;
+    Employee.findById(id, function (err, employee) {
+      if (err) {
+        res.send(err);
+      }
+      res.send(employee);
+    })
+  })
+
 app.use('/api', router);
 
 app.listen(port, function(err) {
