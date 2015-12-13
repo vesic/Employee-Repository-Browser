@@ -36,15 +36,27 @@ router.get('/', function(req, res) {
 });
 
 router.route('/employees')
+  // post employee
   .post(function(req, res) {
-      var employee = new Employee();
-      employee.name = req.body.name;
-      employee.save(function(err) {
-          if (err)
-              res.send(err);
-          res.json({ message: 'Employee created!' });
-      });
-  });
+    var employee = new Employee();
+    employee.name = req.body.name;
+    employee.save(function(err) {
+      if (err) {
+        res.send(err);
+      }
+      
+      res.json({ message: 'Employee created!' });
+    });
+  })
+  .get(function(req, res) {
+    Employee.find(function(err, employees) {
+      if (err) {
+        res.send(err);
+      }
+      
+      res.send(employees);
+    })
+  })
   
 app.use('/api', router);
 
