@@ -31,10 +31,21 @@ var router = express.Router();
 
 router.get('/', function(req, res) {
   res.json({
-    message: 'Success'
+    message: 'success'
   });
 });
 
+router.route('/employees')
+  .post(function(req, res) {
+      var employee = new Employee();
+      employee.name = req.body.name;
+      employee.save(function(err) {
+          if (err)
+              res.send(err);
+          res.json({ message: 'Employee created!' });
+      });
+  });
+  
 app.use('/api', router);
 
 app.listen(port, function(err) {
