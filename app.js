@@ -6,7 +6,6 @@ var mongoose = require("mongoose");
 var config = require("./config");
 var Employee = require("./model/employee");
 
-
 mongoose.connect(config.connection_string)
 var connection = mongoose.connection;
 
@@ -20,8 +19,10 @@ connection
   
 var port = process.env.PORT || 3000;
 
+app.set('view engine', 'jade');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static('public'));
 
 if (app.get('env') == 'development') {
   app.use(logger('dev'));
@@ -94,6 +95,13 @@ router.route('/employees/:id')
   })
   
 app.use('/api', router);
+app.get('/', function(req, res) {
+  res.render('index', {
+    now: new Date().toDateString(),
+    title: 'Employee Repository Browser',
+    msg: "Hello, Employees!"
+  })
+});
 
 app.listen(port, function(err) {
   if (err) {
