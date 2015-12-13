@@ -81,6 +81,17 @@ router.route('/employees/:id')
       })
     })
   })
+  .delete(function(req, res) {
+    var id = req.params.id;
+    Employee.remove({
+      _id: id
+    }, function(err, employee) {
+      if (err) {
+        res.send(err);
+      }
+      res.json({ message: 'Employee deleted!'})
+    })
+  })
   
 app.use('/api', router);
 
