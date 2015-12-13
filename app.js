@@ -4,6 +4,8 @@ var bodyParser = require('body-parser');
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var config = require("./config");
+var Employee = require("./model/employee");
+
 
 mongoose.connect(config.connection_string)
 var connection = mongoose.connection;
