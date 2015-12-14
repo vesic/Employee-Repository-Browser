@@ -25,12 +25,15 @@ html(lang='en', ng-app='app')
               a(href='#contact') Contact
     .container
       .starter-template
-        h1!= msg
-        div
-          a(href='https://employees-repository-browser.herokuapp.com/api/employees') Employees
+        // div
+        //   a(href='https://employees-repository-browser.herokuapp.com/api/employees') Employees
         div(ng-controller='EmployeeCtrl as employeeCtrl')
-          ul
-            li(ng-repeat='e in employeeCtrl.employees') {{ e.name }} 
+          div(ng-repeat='e in employeeCtrl.employees')
+            div.thumbnail
+              div.caption
+                strong {{ e.name }}
+              a(href='')
+                img(ng-src='http://placehold.it/350x150')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
     script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js')
