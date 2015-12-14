@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var logger = require("morgan");
 var mongoose = require("mongoose");
+var _ = require("underscore");
 var config = require("./config");
 var Employee = require("./model/employee");
 

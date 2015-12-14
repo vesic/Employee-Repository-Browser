@@ -6,6 +6,7 @@ html(lang='en', ng-app='app')
     link(href='https://bootswatch.com/superhero/bootstrap.min.css', rel='stylesheet')
     link(href='css/style.css', rel='stylesheet')
   body
+    base(href='/')
     nav.navbar.navbar-inverse.navbar-fixed-top
       .container
         .navbar-header
@@ -25,18 +26,13 @@ html(lang='en', ng-app='app')
               a(href='#contact') Contact
     .container
       .starter-template
-        // div
-        //   a(href='https://employees-repository-browser.herokuapp.com/api/employees') Employees
-        div(ng-controller='EmployeeCtrl as employeeCtrl')
-          div(ng-repeat='e in employeeCtrl.employees')
-            div.thumbnail
-              div.caption
-                strong {{ e.name }}
-              a(href='')
-                img(ng-src='http://placehold.it/350x150')
+        div(ui-view='')
+
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
     script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js')
     script(src='js/app.js')
     script(src='js/controllers.js')
 

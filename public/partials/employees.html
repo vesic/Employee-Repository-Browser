@@ -1,0 +1,19 @@
+<!-- TODO: Angular not rendering jade partials -->
+<!--// div(ng-controller='EmployeeCtrl as employeeCtrl')-->
+<!--//   div(ng-repeat='e in employeeCtrl.employees')-->
+<!--//     div.thumbnail-->
+<!--//       div.caption-->
+<!--//         strong {{ e.name }}-->
+<!--//       a(href='')-->
+<!--//         img(ng-src='http://placehold.it/350x150')-->
+
+<div ng-controller='EmployeesCtrl as employeesCtrl'>
+  <div ng-repeat="e in employeesCtrl.employees">
+    <div class="thumbnail">
+      <div class="caption">
+        <strong>{{ e.name }}</strong>
+        <a ui-sref="employee({ id: e._id })"><img ng-src='http://placehold.it/350x150'></img></a>
+      </div>
+    </div>
+  </div>
+</div>

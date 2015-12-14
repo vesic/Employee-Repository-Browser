@@ -2,11 +2,20 @@
 
 /* global angular */
 angular.module('app-controllers', [])
-  .controller('EmployeeCtrl', function($http) {
+  .controller('EmployeesCtrl', function($http, $stateParams) {
     var self = this;
-    self.foo = 'Hola mundo';
     $http.get('/api/employees')
       .then(function(res) {
         self.employees = res.data;
+      })
+  })
+  .controller('EmployeeCtrl', function($http, $stateParams) {
+    var self = this;
+    var id = $stateParams.id;
+    
+    $http.get('/api/employees/' + id)
+      .then(function(res) {
+        self.employee = res.data;
+        console.log(self.employee);
       })
   })
