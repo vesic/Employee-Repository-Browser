@@ -1,5 +1,5 @@
 doctype html
-html(lang='en')
+html(lang='en', ng-app='app')
   head
     meta(charset='utf-8')
     title Starter Template for Bootstrap
@@ -28,6 +28,11 @@ html(lang='en')
         h1!= msg
         div
           a(href='https://employees-repository-browser.herokuapp.com/api/employees') Employees
-          br
+        div(ng-controller='EmployeeCtrl as employeeCtrl')
+          {{ employeeCtrl.foo }}
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js')
+    script(src='js/app.js')
+    script(src='js/controllers.js')
 
