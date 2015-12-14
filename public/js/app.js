@@ -2,6 +2,6 @@
 
 /* global angular */
 angular.module('app', ['app-controllers'])
-    .run(function() {
-        console.clear();
-    })
+  .run(function() {
+    console.clear();
+  })
